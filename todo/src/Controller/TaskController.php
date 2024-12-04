@@ -78,13 +78,7 @@ class TaskController extends AbstractController
         return new JsonResponse(['message' => 'Task deleted'], JsonResponse::HTTP_CREATED);
     }
 
-    // public function show_task(TaskRepository $taskRepository)
-    // {
-        //     $task = $taskRepository->findAll();
-        //     return $this->json($task);
-        // }
-        
-    #[Route('/task', name: 'show_task', methods: ['GET'])]
+   #[Route('/task', name: 'show_task', methods: ['GET'])]
     public function show_task(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
         $page = max(1, (int) $request->query->get('page', 1));
