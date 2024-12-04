@@ -4,4 +4,8 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'create_task' => [[], ['_controller' => 'App\\Controller\\TaskController::create_task'], [], [['text', '/task']], [], [], []],
+    'update_task' => [['id'], ['_controller' => 'App\\Controller\\TaskController::update_task'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/task']], [], [], []],
+    'App\Controller\TaskController::create_task' => [[], ['_controller' => 'App\\Controller\\TaskController::create_task'], [], [['text', '/task']], [], [], []],
+    'App\Controller\TaskController::update_task' => [['id'], ['_controller' => 'App\\Controller\\TaskController::update_task'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/task']], [], [], []],
 ];
