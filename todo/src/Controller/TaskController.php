@@ -6,11 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class TaskController extends AbstractController
@@ -66,7 +64,7 @@ class TaskController extends AbstractController
     }
 
     #[Route('/task/{id}', name: 'delete_task', methods: ['DELETE'])]
-    public function delete_task($id, Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator, TaskRepository $taskRepository)
+    public function delete_task($id, EntityManagerInterface $entityManager, ValidatorInterface $validator, TaskRepository $taskRepository)
     {
         $task = $taskRepository->find($id);
 
@@ -80,10 +78,27 @@ class TaskController extends AbstractController
         return new JsonResponse(['message' => 'Task deleted'], JsonResponse::HTTP_CREATED);
     }
 
+    // public function show_task(TaskRepository $taskRepository)
+    // {
+        //     $task = $taskRepository->findAll();
+        //     return $this->json($task);
+        // }
+        
     #[Route('/task', name: 'show_task', methods: ['GET'])]
-    public function show_task(TaskRepository $taskRepository)
+    public function show_task(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
-        $task = $taskRepository->findAll();
-        return $this->json($task);
+        $page = max(1, (int) $request->query->get('page', 1));
+        $limit = 10;
+
+        $repository = $entityManager->getRepository(Task::class);
+        $queryBuilder = $repository->createQueryBuilder('t');
+
+        $queryBuilder->orderBy('t.status', 'DESC')
+                     ->setFirstResult(($page - 1) * $limit)
+                     ->setMaxResults($limit);
+
+        $tasks = $queryBuilder->getQuery()->getResult();
+
+        return $this->json($tasks);
     }
 }

@@ -207,7 +207,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.ecGx8xc"/>
+      <argument type="service" id=".service_locator.2zyFZrt"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1293,7 +1293,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.ecGx8xc"/>
+      <argument type="service" id=".service_locator.2zyFZrt"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -3491,19 +3491,19 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.LlFsD3l" method="withContext"/>
     </service>
-    <service id=".service_locator.HTuWMbh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.egipcEH" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="taskRepository" type="service_closure" id="App\Repository\TaskRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.HTuWMbh.App\Controller\TaskController::show_task()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.egipcEH.App\Controller\TaskController::show_task()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\TaskController::show_task()"/>
       <argument>App\Controller\TaskController::show_task()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.HTuWMbh" method="withContext"/>
+      <factory service=".service_locator.egipcEH" method="withContext"/>
     </service>
-    <service id=".service_locator.ecGx8xc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.2zyFZrt" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -3513,13 +3513,13 @@
         <argument key="App\Controller\TaskController::create_task" type="service_closure" id=".service_locator.Pvsz2ki.App\Controller\TaskController::create_task()"/>
         <argument key="App\Controller\TaskController::update_task" type="service_closure" id=".service_locator.LlFsD3l.App\Controller\TaskController::update_task()"/>
         <argument key="App\Controller\TaskController::delete_task" type="service_closure" id=".service_locator.LlFsD3l.App\Controller\TaskController::delete_task()"/>
-        <argument key="App\Controller\TaskController::show_task" type="service_closure" id=".service_locator.HTuWMbh.App\Controller\TaskController::show_task()"/>
+        <argument key="App\Controller\TaskController::show_task" type="service_closure" id=".service_locator.egipcEH.App\Controller\TaskController::show_task()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.zHyJIs5.kernel::loadRoutes()"/>
         <argument key="App\Controller\TaskController:create_task" type="service_closure" id=".service_locator.Pvsz2ki.App\Controller\TaskController::create_task()"/>
         <argument key="App\Controller\TaskController:update_task" type="service_closure" id=".service_locator.LlFsD3l.App\Controller\TaskController::update_task()"/>
         <argument key="App\Controller\TaskController:delete_task" type="service_closure" id=".service_locator.LlFsD3l.App\Controller\TaskController::delete_task()"/>
-        <argument key="App\Controller\TaskController:show_task" type="service_closure" id=".service_locator.HTuWMbh.App\Controller\TaskController::show_task()"/>
+        <argument key="App\Controller\TaskController:show_task" type="service_closure" id=".service_locator.egipcEH.App\Controller\TaskController::show_task()"/>
       </argument>
     </service>
     <service id=".service_locator.JuRh477" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -4524,7 +4524,7 @@
     <service id="doctrine.orm.default_entity_manager.event_manager" alias="doctrine.dbal.default_connection.event_manager"/>
     <service id="doctrine.migrations.metadata_storage" alias="doctrine.migrations.storage.table_storage"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ecGx8xc"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.2zyFZrt"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.FcIjeic" alias=".service_locator.JuRh477"/>
@@ -4535,7 +4535,7 @@
     <service id=".service_locator.n_ENPtW" alias=".service_locator.zHyJIs5"/>
     <service id=".service_locator.mje6fqU" alias=".service_locator.Pvsz2ki"/>
     <service id=".service_locator.oR1D9Lw" alias=".service_locator.LlFsD3l"/>
-    <service id=".service_locator.4qzKyXf" alias=".service_locator.HTuWMbh"/>
+    <service id=".service_locator.5Vd5JYV" alias=".service_locator.egipcEH"/>
     <service id=".service_locator.i9yrr1E" alias=".service_locator.ZyP9f7K"/>
   </services>
 </container>
