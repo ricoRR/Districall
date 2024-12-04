@@ -29,11 +29,11 @@ DATABASE_URL="mysql://username:password@127.0.0.1:3306/nom_de_la_base?serverVers
 
 Créer la base de données et les migrations :
 
-php bin/console doctrine:database:create
-php bin/console doctrine:migrations:migrate
+$ symfony console doctrine:database:create
+$ symfony console doctrine:migrations:migrate
 
 Lancer le serveur local :
 
-symfony server:start
+$ symfony server:start
 
 et pour tester l'api il faut utiliser postman ou un équivalent
